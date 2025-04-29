@@ -6,7 +6,7 @@ library(purrr)
 library(caret)
 
 # Set working directory
-setwd("~data")
+setwd("~data/")
 
 # Read CSV file
 data_path <- "TStrend_Variables.csv"
