@@ -5,11 +5,11 @@ library(dplyr)
 library(ggplot2)
 
 # Set the folder path where GeoTIFF files are stored
-data_folder <- "~data/Tree Coverage/Geotiff"
+data_folder <- "~data/Tree Cover/Geotiff"
 # Get all GeoTIFF file paths
 file_list <- list.files(data_folder, pattern = "\\.tif$", full.names = TRUE)
 
-# Ensure the files are sorted by year (e.g., "ndvi_1982.tif", "ndvi_1983.tif")
+# Ensure the files are sorted by year
 file_list <- file_list[order(file_list)]
 
 # Read all GeoTIFF files into a SpatRaster stack
@@ -19,7 +19,7 @@ wgs84_crs <- "EPSG:4326"
 
 r_stack_wgs84 <- project(r_stack, wgs84_crs)
 
-# Extract years from file names (assuming format "ndvi_YYYY.tif")
+# Extract years from file names
 years <- as.numeric(gsub(".*_(\\d{4})\\.tif$", "\\1", file_list))
 
 # Check if the years are sorted correctly
@@ -33,7 +33,7 @@ colnames(r_df)[3:ncol(r_df)] <- paste0("tc", years)
 head(r_df)
 
 # Extract the time series matrix (Y) and coordinate matrix (coords)
-Y <- as.matrix(r_df[, -(1:2)])  # NDVI time series
+Y <- as.matrix(r_df[, -(1:2)]) 
 coords <- as.matrix(r_df[, 1:2])  # Longitude and latitude coordinates
 
 # Ensure there are no missing values in the data
@@ -56,4 +56,3 @@ pvalue_raster<-rast(cbind(coords, pvalue), type = "xyz", crs = crs(r_stack))
 
 writeRaster(trend_raster, "~out/partitioned_TC_trend.tif", overwrite = TRUE)
 writeRaster(pvalue_raster, "~out/partitioned_TC_trend_pvalue.tif", overwrite = TRUE)
-
