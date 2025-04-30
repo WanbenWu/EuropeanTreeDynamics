@@ -2,7 +2,7 @@ library(dplyr)
 library(ggplot2)
 library(gridExtra)
 
-setwd('~data/data for fig2')
+setwd('~data/TCacrossBiogeo')
 custom_order <- c('alpine','atlantic','boreal','continental','mediterranean','pannonian/steppic')
 
 # Load trend data for each metric
