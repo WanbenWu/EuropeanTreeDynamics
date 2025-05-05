@@ -56,3 +56,4 @@ pvalue_raster<-rast(cbind(coords, pvalue), type = "xyz", crs = crs(r_stack))
 
 writeRaster(trend_raster, "~out/partitioned_TC_trend.tif", overwrite = TRUE)
 writeRaster(pvalue_raster, "~out/partitioned_TC_trend_pvalue.tif", overwrite = TRUE)
+
