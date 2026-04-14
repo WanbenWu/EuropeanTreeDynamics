@@ -2,7 +2,6 @@
 This repository contains data and scripts for the manuscript 'Patterns, drivers and potential biodiversity consequences of widespread tree-cover expansion in Europe' (in review)  
 
 data/: Contains example data for testing the R code  
-builds/: Contains produced outputs, such as estimates and plots.  
 R/: Contains all R scripts, organized into the following subfolders:  
 
   analysis/: Scripts for analysis.  
