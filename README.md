@@ -1,5 +1,5 @@
 # European-tree-cover-dynamics
-This repository contains data and scripts for the manuscript 'Patterns, drivers and potential biodiversity consequences of widespread tree-cover expansion in Europe' (in review)  
+This repository contains data and scripts for the manuscript 'Widespread tree-cover gains across Europe over two decades were strongest in regions of agricultural retreat' (in review)  
 
 data/: Contains example data for testing the R code  
 R/: Contains all R scripts, organized into the following subfolders:  
