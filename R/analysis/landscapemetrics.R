@@ -41,17 +41,16 @@ for (year in 2001:2021) {
   ) %dopar% {
     
     # Read raster (0/1 forest map)
-    FM <- rast(paste0(
-      "~data/",
-      "Tree canopy extent and height/Tree_extent_",
-      year, "_UTM32.tif"
+    FM <- rast(file.path(
+      "Data", "Tree canopy extent and height",
+      paste0("Tree_extent_", year, "_UTM32.tif")
     ))
     
     # Read shapefile (1 km fishnet)
-    FN <- st_read(
-      "~data/",
-      "ForestTriAngle_1km/fishnetin1km/EU_1km_fishnet_UTM32.shp"
-    )
+    FN <- st_read(file.path(
+      "Data", "ForestTriAngle_1km", "fishnetin1km",
+      "EU_1km_fishnet_UTM32.shp"
+    ), quiet = TRUE)
     
     # Subset features based on Code values
     subset_fn <- FN[(FN$Code > min_vals[i]) & (FN$Code <= max_vals[i]), ]
@@ -73,10 +72,11 @@ for (year in 2001:2021) {
   result_df <- do.call(rbind, result_list)
   write.csv(
     result_df, 
-    paste0(
-      "~output/",
-      "ForestTriAngle_1km/lsm_1km/lsm_", year, ".csv"
-    ),
+    file.path("outputs", paste0("landscape_metrics_", year, ".csv")),
     row.names = FALSE
   )
 }
+
+
+
+
